@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="is-flex">
+  <div id="app">
     <router-view v-if="indexShow"></router-view>
     <Loading id="loading" v-else/>
   </div>
@@ -21,13 +21,14 @@ export default {
   mounted(){
     setTimeout(() => {
       this.indexShow=true;
-    }, 3000);
+    }, 2000);
   }
 }
 </script>
 
 <style>
 #app {
+  display: flex;
   height: 100vh;
   width: 100vw;
   margin: 0;

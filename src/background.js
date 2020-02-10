@@ -18,7 +18,7 @@ function createWindow () {
   // Create the browser window.
   win = new BrowserWindow({
     width         : 800,
-    height        : 600,
+    height        : 800,
     resizable     : false,
     title         : '三维编织模拟系统',
     webPreferences: {
