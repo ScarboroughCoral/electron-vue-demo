@@ -1,18 +1,18 @@
 # electron-vue-demo
+> Vue-cli Electron ElementUI
+## 安装依赖
+```
+yarn
+```
+## 运行与打包
+### 热更新开发模式
+```
+yarn run electron:serve
+```
 
-## Project setup
+### 生产模式打包
 ```
-yarn install
-```
-
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
+yarn run electron:build
 ```
 
 ### Lints and fixes files
