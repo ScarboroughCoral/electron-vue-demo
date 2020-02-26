@@ -1,29 +1,30 @@
 <template>
   <div id="app">
-    <router-view v-if="indexShow"></router-view>
-    <Loading id="loading" v-else/>
+    <router-view class="main-view" v-if="indexShow"></router-view>
+    <Loading v-else />
   </div>
 </template>
 
 <script>
-import Loading from '@/components/AnimateLoading';
+import Loading from "@/components/AnimateLoading";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     Loading
   },
   data() {
     return {
       indexShow: false
-    }
+    };
   },
-  mounted(){
+  mounted() {
+    this.indexShow = false;
     setTimeout(() => {
-      this.indexShow=true;
+      this.indexShow = true;
     }, 2000);
   }
-}
+};
 </script>
 
 <style>
@@ -32,17 +33,10 @@ export default {
   height: 100vh;
   width: 100vw;
   margin: 0;
-  justify-content: center;
-  align-items: center;
+  padding: 0;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-#loading{
-  position: absolute;
-  height: 100vh;
-  width: 100vw;
-  background-color: #ffe196
 }
 
 </style>

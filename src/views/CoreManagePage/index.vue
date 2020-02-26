@@ -1,12 +1,13 @@
 <template>
-  <div>
-    内芯管理
+  <div class="container">
+    <el-page-header class="has-background-primary" @back="$router.push('/')" content="内芯管理"></el-page-header>
   </div>
 </template>
 
 <script>
   export default {
-    
+    methods: {
+    },
   }
 </script>
 

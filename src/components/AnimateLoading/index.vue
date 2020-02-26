@@ -1,5 +1,5 @@
 <template>
-  <div class="loading-container section container is-flex">
+  <div class="loading-container">
     <div class="bouncing-loader">
       <div></div>
       <div></div>
@@ -14,8 +14,11 @@ export default {};
 
 <style scoped>
 .loading-container{
+  display: flex;
+  width: 100%;
   justify-content: center;
   align-items: center;
+  background-color: #ffe196;
 }
 @keyframes bouncing-loader {
   to {

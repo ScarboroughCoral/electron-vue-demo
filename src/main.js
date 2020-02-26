@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router';
 import Element from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+import 'bulma/css/bulma.css';
 import '@/styles/global.css'
 
 Vue.config.productionTip = false
