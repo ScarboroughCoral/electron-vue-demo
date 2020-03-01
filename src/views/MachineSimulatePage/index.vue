@@ -1,6 +1,7 @@
 <template>
   <div class="page-container">
-    <el-page-header @back="$router.push('/')" content="真机模拟"></el-page-header>
+    <!-- discard the elementui -->
+    <!-- <el-page-header @back="$router.push('/')" content="真机模拟"></el-page-header> -->
     <div class="simulator-container">
       <simulator></simulator>
     </div>

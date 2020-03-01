@@ -1,6 +1,7 @@
 <template>
   <div class="container">
-    <el-page-header class="has-background-primary" @back="$router.push('/')" content="内芯管理"></el-page-header>
+    <!-- discard the elementui -->
+    <!-- <el-page-header class="has-background-primary" @back="$router.push('/')" content="内芯管理"></el-page-header> -->
   </div>
 </template>
 

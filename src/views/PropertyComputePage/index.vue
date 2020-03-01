@@ -1,6 +1,7 @@
 <template>
   <div>
-    <el-page-header @back="$router.push('/')" content="属性计算"></el-page-header>
+    <!-- discard the elementui -->
+    <!-- <el-page-header @back="$router.push('/')" content="属性计算"></el-page-header> -->
   </div>
 </template>
 
