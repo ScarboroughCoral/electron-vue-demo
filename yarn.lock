@@ -1031,6 +1031,11 @@
   resolved "https://registry.npm.taobao.org/@vue/cli-plugin-vuex/download/@vue/cli-plugin-vuex-4.2.2.tgz#f504b554e7edde945342e3c42cffad80ffa41933"
   integrity sha1-9QS1VOft3pRTQuPELP+tgP+kGTM=
 
+"@vue/cli-plugin-vuex@~4.2.0":
+  version "4.2.3"
+  resolved "https://registry.npm.taobao.org/@vue/cli-plugin-vuex/download/@vue/cli-plugin-vuex-4.2.3.tgz#aa1d8e824dd82b8718c0c40e3906c34ccd752516"
+  integrity sha1-qh2Ogk3YK4cYwMQOOQbDTM11JRY=
+
 "@vue/cli-service@~4.2.0":
   version "4.2.2"
   resolved "https://registry.npm.taobao.org/@vue/cli-service/download/@vue/cli-service-4.2.2.tgz?cache=0&sync_timestamp=1581073960703&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40vue%2Fcli-service%2Fdownload%2F%40vue%2Fcli-service-4.2.2.tgz#b2bc820a46c080a7564df23cf7e5c9592d1acc99"
