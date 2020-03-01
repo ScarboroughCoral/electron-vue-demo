@@ -7,7 +7,6 @@
 
 <script>
 import Loading from "@/components/AnimateLoading";
-
 export default {
   name: "App",
   components: {
@@ -38,5 +37,4 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 </style>
