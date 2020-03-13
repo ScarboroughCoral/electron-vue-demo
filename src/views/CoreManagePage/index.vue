@@ -1,5 +1,10 @@
 <template>
-  <div class="container">
+  <v-container class="fill-height">
+    <v-snackbar
+      v-model="logShow"
+    >
+    缓慢任务队列加载中。。。（加载完毕后提示关闭）
+    </v-snackbar>
     <v-simple-table>
       <template v-slot:default>
         <thead>
@@ -18,38 +23,46 @@
         </tbody>
       </template>
     </v-simple-table>
-  </div>
+  </v-container>
 </template>
 
 <script>
 import makeFactorial from "./test.wasm";
-
+import TaskQueue from "@/tools/TaskQueue";
 export default {
   data() {
     return {
-      items: []
+      items: [],
+      logShow:true,
     };
   },
   methods: {
     wasmTest() {
+      let q = new TaskQueue();
       let num = 15;
-      let count=10e6;
+      let count = 10e6;
       makeFactorial().then(m => {
-        let wasmFact=m.instance.exports._Z4facti;
+        let wasmFact = m.instance.exports._Z4facti;
+        const delay = 500;
         while (num < 20) {
-          let wasm = Date.now();
-          for(let i=0;i<count;i++) wasmFact(num);
-          wasm = Date.now() - wasm;
-          let js = Date.now();
-          for(let i=0;i<count;i++) fact(num);
-          js = Date.now() - js;
-          this.items.push({
-            type:`${num}!`,
-            wasm:wasm,
-            js:js
-          })
+          q.task(delay, () => {
+            let wasm = Date.now();
+            for (let i = 0; i < count; i++) wasmFact(num);
+            wasm = Date.now() - wasm;
+            let js = Date.now();
+            for(let i=0;i<count;i++) fact(num);
+            js = Date.now() - js;
+            this.items.push({
+              type: `${num}!`,
+              wasm,
+              js
+            });
+          });
           num++;
         }
+        q.start().then(()=>{
+          this.logShow=false;
+        })
       });
       function fact(n) {
         if (n < 2) return 1;
@@ -58,7 +71,18 @@ export default {
     }
   },
   mounted() {
-    this.wasmTest();
+    this.wasmTest()
+    // new TaskQueue()
+    // .task(1000, () => {
+    //     console.log(1);
+    // })
+    // .task(2000, () => {
+    //     console.log(2);
+    // })
+    // .task(3000, () => {
+    //     console.log(3);
+    // })
+    // .start();
   }
 };
 </script>
