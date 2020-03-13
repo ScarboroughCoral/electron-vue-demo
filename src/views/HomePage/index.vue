@@ -17,7 +17,7 @@
 
 <script>
   import MenuItem from '@/components/MenuItem';
-  import menuConfig from '@/config/menuConfig.js';
+  import menuConfig from '@/config/menuConfig';
   export default {
     components:{
       MenuItem

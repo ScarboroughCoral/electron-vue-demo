@@ -4,7 +4,7 @@ export default [
     title:'内芯管理',
     route:'/core-manage',
     name:'Core Manage',
-    page:()=>import('@/views/CoreManagePage'),
+    page:()=>import('@/views/CoreManagePage/index.vue'),
     icon:'el-icon-coin'
   },
   {
@@ -12,7 +12,7 @@ export default [
     title:'真机模拟',
     route:'/machine-simulate',
     name:'Machine Simulate',
-    page:()=>import('@/views/MachineSimulatePage'),
+    page:()=>import('@/views/MachineSimulatePage/index.vue'),
     icon:'el-icon-turn-off'
   },
   {
@@ -20,7 +20,7 @@ export default [
     title:'属性计算',
     route:'/property-compute',
     name:'Property Compute',
-    page:()=>import('@/views/PropertyComputePage'),
+    page:()=>import('@/views/PropertyComputePage/index.vue'),
     icon:'el-icon-s-grid'
   },
   {
@@ -28,7 +28,7 @@ export default [
     title:'外壳管理',
     route:'/shell-manage',
     name:'Shell-Manage',
-    page:()=>import('@/views/ShellManagePage'),
+    page:()=>import('@/views/ShellManagePage/index.vue'),
     icon:'el-icon-delete-solid'
   }
 ]
