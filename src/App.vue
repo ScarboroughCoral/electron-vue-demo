@@ -1,45 +1,27 @@
 <template>
   <v-app id="inspire">
-    <v-navigation-drawer
-      v-model="drawer"
-      app
-      clipped
-    >
+    <v-navigation-drawer v-model="drawer" app clipped>
       <v-list dense>
-        <v-list-item
-          v-for="item in items"
-          :key="item.text"
-          link
-        >
+        <v-list-item v-for="(item,i) in items" :key="i" link class="mb-2" :to="item.route">
           <v-list-item-action>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>
-              {{ item.text }}
-            </v-list-item-title>
+            <v-list-item-title class="subtitle-2 font-weight-black">{{ item.title }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-subheader class="mt-4 grey--text text--darken-1">SUBSCRIPTIONS</v-subheader>
+        <!-- 订阅者们 -->
+        <!-- <v-subheader class="mt-4 grey--text text--darken-1">SUBSCRIPTIONS</v-subheader>
         <v-list>
-          <v-list-item
-            v-for="item in items2"
-            :key="item.text"
-            link
-          >
+          <v-list-item v-for="item in items2" :key="item.text" link>
             <v-list-item-avatar>
-              <img
-                :src="`https://randomuser.me/api/portraits/men/${item.picture}.jpg`"
-                alt=""
-              >
+              <img :src="`https://randomuser.me/api/portraits/men/${item.picture}.jpg`" alt />
             </v-list-item-avatar>
             <v-list-item-title v-text="item.text" />
           </v-list-item>
-        </v-list>
-        <v-list-item
-          class="mt-4"
-          link
-        >
+        </v-list>-->
+        <!-- 其他 -->
+        <!-- <v-list-item class="mt-4" link>
           <v-list-item-action>
             <v-icon color="grey darken-1">mdi-plus-circle-outline</v-icon>
           </v-list-item-action>
@@ -50,108 +32,85 @@
             <v-icon color="grey darken-1">mdi-settings</v-icon>
           </v-list-item-action>
           <v-list-item-title class="grey--text text--darken-1">Manage Subscriptions</v-list-item-title>
-        </v-list-item>
+        </v-list-item>-->
       </v-list>
     </v-navigation-drawer>
 
-    <v-app-bar
-      app
-      clipped-left
-      color="red"
-      dense
-    >
+    <v-app-bar app clipped-left color="secondary" dense>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-icon
-        class="mx-4"
-        large
-      >
-        mdi-youtube
-      </v-icon>
+      <v-icon class="mx-3" large>mdi-flower-outline</v-icon>
       <v-toolbar-title class="mr-12 align-center">
-        <span class="title">Youtube</span>
+        <span class="title">三维编织模拟系统</span>
       </v-toolbar-title>
       <v-spacer />
-      <v-row
-        align="center"
-        style="max-width: 650px"
+      <v-menu offset-y>
+        <template v-slot:activator="{ on }">
+          <v-btn v-on="on" >主题</v-btn>
+        </template>
+        <v-list>
+          <v-list-item
+            v-for="(item, index) in themes"
+            :key="index"
+            @click="$vuetify.theme.dark=item.dark,dark=item.dark"
+          >
+            <v-list-item-title>{{ item.text }}</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
+      <v-btn
+        text
+        href="https://github.com/ScarboroughCoral/electron-vue-demo"
+        target="_blank"
       >
-        <v-text-field
-          :append-icon-cb="() => {}"
-          placeholder="Search..."
-          single-line
-          append-icon="mdi-magnify"
-          color="white"
-          hide-details
-        />
-      </v-row>
+        <span class="mr-2">GitHub</span>
+        <v-icon>mdi-open-in-new</v-icon>
+      </v-btn>
     </v-app-bar>
 
     <v-content>
       <v-container class="fill-height">
-        <v-row
-          justify="center"
-          align="center"
-        >
-          <v-col class="shrink">
-            <v-tooltip right>
-              <template v-slot:activator="{ on }">
-                <v-btn
-                  :href="source"
-                  icon
-                  large
-                  target="_blank"
-                  v-on="on"
-                >
-                  <v-icon large>mdi-code-tags</v-icon>
-                </v-btn>
-              </template>
-              <span>Source</span>
-            </v-tooltip>
-            <v-tooltip right>
-              <template v-slot:activator="{ on }">
-                <v-btn
-                  icon
-                  large
-                  href="https://codepen.io/johnjleider/pen/aezMOO"
-                  target="_blank"
-                  v-on="on"
-                >
-                  <v-icon large>mdi-codepen</v-icon>
-                </v-btn>
-              </template>
-              <span>Codepen</span>
-            </v-tooltip>
-          </v-col>
-        </v-row>
+        <router-view></router-view>
       </v-container>
     </v-content>
   </v-app>
 </template>
 
-<script>
-  export default {
-    props: {
-      source: String,
-    },
-    data: () => ({
-      drawer: null,
-      items: [
-        { icon: 'mdi-trending-up', text: 'Most Popular' },
-        { icon: 'mdi-youtube-subscription', text: 'Subscriptions' },
-        { icon: 'mdi-history', text: 'History' },
-        { icon: 'mdi-playlist-play', text: 'Playlists' },
-        { icon: 'mdi-clock', text: 'Watch Later' },
-      ],
-      items2: [
-        { picture: 28, text: 'Joseph' },
-        { picture: 38, text: 'Apple' },
-        { picture: 48, text: 'Xbox Ahoy' },
-        { picture: 58, text: 'Nokia' },
-        { picture: 78, text: 'MKBHD' },
-      ],
-    }),
-    created () {
-      this.$vuetify.theme.dark = true
-    },
+<script lang = "ts">
+import items from "@/config/menuConfig";
+export default {
+  props: {
+    source: String
+  },
+  data: () => ({
+    drawer: null,
+    items,
+    dark:true,
+    themes: [
+      {
+        dark: true,
+        text: "夜间"
+      },
+      {
+        dark: false,
+        text: "白天"
+      }
+    ]
+    // ===================订阅者模拟数据============================
+    // items2: [
+    //   { picture: 28, text: "Joseph" },
+    //   { picture: 38, text: "Apple" },
+    //   { picture: 48, text: "Xbox Ahoy" },
+    //   { picture: 58, text: "Nokia" },
+    //   { picture: 78, text: "MKBHD" }
+    // ]
+  }),
+  created() {
+    // 读取缓存主题
+    // this.dark=this.$vuetify.theme.dark=localStorage.getItem("dark")==="true"
+  },
+  beforeDestroy(){
+    // 保存当前主题
+    // localStorage.setItem("dark",Boolean(this.dark).toString());
   }
+};
 </script>
