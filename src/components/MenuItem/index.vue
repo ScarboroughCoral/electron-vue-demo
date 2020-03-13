@@ -1,6 +1,6 @@
 <template>
   <div class="menu-item-container" :style="{'background-color':color}">
-    <h2 class="menu-title title"><i :class="icon"></i><br>{{title}}</h2>
+    <h2 class="menu-title title"> <v-icon large>{{icon}}</v-icon><br>{{title}}</h2>
   </div>
 </template>
 

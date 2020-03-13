@@ -5,7 +5,7 @@ export default [
     route:'/core-manage',
     name:'Core Manage',
     page:()=>import('@/views/CoreManagePage/index.vue'),
-    icon:'el-icon-coin'
+    icon:'mdi-chip'
   },
   {
     color:'#eaffd0',
@@ -13,7 +13,7 @@ export default [
     route:'/machine-simulate',
     name:'Machine Simulate',
     page:()=>import('@/views/MachineSimulatePage/index.vue'),
-    icon:'el-icon-turn-off'
+    icon:'mdi-slot-machine'
   },
   {
     color:'#fce38a',
@@ -21,7 +21,7 @@ export default [
     route:'/property-compute',
     name:'Property Compute',
     page:()=>import('@/views/PropertyComputePage/index.vue'),
-    icon:'el-icon-s-grid'
+    icon:'mdi-lead-pencil'
   },
   {
     color:'#f38181',
@@ -29,6 +29,6 @@ export default [
     route:'/shell-manage',
     name:'Shell-Manage',
     page:()=>import('@/views/ShellManagePage/index.vue'),
-    icon:'el-icon-delete-solid'
+    icon:'mdi-powershell'
   }
 ]
