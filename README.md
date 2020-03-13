@@ -13,6 +13,8 @@ yarn electron:serve
 ## WebAssembly 测试
 - 阶乘计算
 > 一次计算不太明显，每个阶乘计算了10e6次
+
+
 ![](docs/pics/cmp.png)
 
 ## 安装依赖

@@ -40,7 +40,6 @@ export default {
           let wasm = Date.now();
           for(let i=0;i<count;i++) wasmFact(num);
           wasm = Date.now() - wasm;
-          console.log(wasm)
           let js = Date.now();
           for(let i=0;i<count;i++) fact(num);
           js = Date.now() - js;
