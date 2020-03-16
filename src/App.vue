@@ -2,12 +2,20 @@
   <v-app id="inspire">
     <v-navigation-drawer v-model="drawer" app clipped>
       <v-list dense>
-        <v-list-item v-for="(item,i) in items" :key="i" link class="mb-2" :to="item.route">
+        <v-list-item
+          v-for="(item, i) in items"
+          :key="i"
+          link
+          class="mb-2"
+          :to="item.route"
+        >
           <v-list-item-action>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title class="subtitle-2 font-weight-black">{{ item.title }}</v-list-item-title>
+            <v-list-item-title class="subtitle-2 font-weight-black">{{
+              item.title
+            }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
         <!-- 订阅者们 -->
@@ -45,13 +53,13 @@
       <v-spacer />
       <v-menu offset-y>
         <template v-slot:activator="{ on }">
-          <v-btn v-on="on" >主题</v-btn>
+          <v-btn v-on="on">主题</v-btn>
         </template>
         <v-list>
           <v-list-item
             v-for="(item, index) in themes"
             :key="index"
-            @click="$vuetify.theme.dark=item.dark,dark=item.dark"
+            @click="$vuetify.theme.dark = item.dark"
           >
             <v-list-item-title>{{ item.text }}</v-list-item-title>
           </v-list-item>
@@ -75,8 +83,8 @@
   </v-app>
 </template>
 
-<script lang = "ts">
-import items from "@/config/menuConfig";
+<script lang="ts">
+import items from '@/config/menuConfig';
 export default {
   props: {
     source: String
@@ -84,15 +92,14 @@ export default {
   data: () => ({
     drawer: null,
     items,
-    dark:true,
     themes: [
       {
         dark: true,
-        text: "夜间"
+        text: '夜间'
       },
       {
         dark: false,
-        text: "白天"
+        text: '白天'
       }
     ]
     // ===================订阅者模拟数据============================
@@ -106,11 +113,12 @@ export default {
   }),
   created() {
     // 读取缓存主题
-    // this.dark=this.$vuetify.theme.dark=localStorage.getItem("dark")==="true"
+
+    this.$vuetify.theme.dark = localStorage.getItem('dark') === 'true';
   },
-  beforeDestroy(){
+  beforeDestroy() {
     // 保存当前主题
-    // localStorage.setItem("dark",Boolean(this.dark).toString());
+    localStorage.setItem('dark', this.$vuetify.theme.dark.toString());
   }
 };
 </script>
