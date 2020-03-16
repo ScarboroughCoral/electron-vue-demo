@@ -2,20 +2,16 @@
   <v-app id="inspire">
     <v-navigation-drawer v-model="drawer" app clipped>
       <v-list dense>
-        <v-list-item
-          v-for="(item, i) in items"
-          :key="i"
-          link
-          class="mb-2"
-          :to="item.route"
-        >
+        <v-list-item v-for="(item, i) in items" :key="i" link class="mb-2" :to="item.route">
           <v-list-item-action>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title class="subtitle-2 font-weight-black">{{
+            <v-list-item-title class="subtitle-2 font-weight-black">
+              {{
               item.title
-            }}</v-list-item-title>
+              }}
+            </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
         <!-- 订阅者们 -->
@@ -65,11 +61,7 @@
           </v-list-item>
         </v-list>
       </v-menu>
-      <v-btn
-        text
-        href="https://github.com/ScarboroughCoral/electron-vue-demo"
-        target="_blank"
-      >
+      <v-btn text href="https://github.com/ScarboroughCoral/electron-vue-demo" target="_blank">
         <span class="mr-2">GitHub</span>
         <v-icon>mdi-open-in-new</v-icon>
       </v-btn>
