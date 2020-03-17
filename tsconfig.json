@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "target": "esnext",//官方推荐编译目标使用es5
-    "module": "esnext",//官方推荐使用es5
+    "target": "esnext", //官方推荐编译目标使用es5
+    "module": "esnext", //官方推荐使用es5
     "strict": true,
     "jsx": "preserve",
     "importHelpers": true,
@@ -13,7 +13,6 @@
     "baseUrl": ".",
     "types": [
       "webpack-env",
-      "vuetify",
     ],
     "paths": {
       "@/*": [

@@ -52,11 +52,7 @@
           <v-btn v-on="on">主题</v-btn>
         </template>
         <v-list>
-          <v-list-item
-            v-for="(item, index) in themes"
-            :key="index"
-            @click="$vuetify.theme.dark = item.dark"
-          >
+          <v-list-item v-for="(item, index) in themes" :key="index" @click="updateTheme(item.dark)">
             <v-list-item-title>{{ item.text }}</v-list-item-title>
           </v-list-item>
         </v-list>
@@ -77,40 +73,34 @@
 
 <script lang="ts">
 import items from '@/config/menuConfig';
-export default {
-  props: {
-    source: String
-  },
-  data: () => ({
-    drawer: null,
-    items,
-    themes: [
-      {
-        dark: true,
-        text: '夜间'
-      },
-      {
-        dark: false,
-        text: '白天'
-      }
-    ]
-    // ===================订阅者模拟数据============================
-    // items2: [
-    //   { picture: 28, text: "Joseph" },
-    //   { picture: 38, text: "Apple" },
-    //   { picture: 48, text: "Xbox Ahoy" },
-    //   { picture: 58, text: "Nokia" },
-    //   { picture: 78, text: "MKBHD" }
-    // ]
-  }),
-  created() {
-    // 读取缓存主题
+import { Component, Vue } from 'vue-property-decorator';
 
-    this.$vuetify.theme.dark = localStorage.getItem('dark') === 'true';
-  },
-  beforeDestroy() {
-    // 保存当前主题
-    localStorage.setItem('dark', this.$vuetify.theme.dark.toString());
+interface Theme {
+  dark: boolean;
+  text: string;
+}
+
+@Component
+export default class App extends Vue {
+  drawer = null;
+  items = items;
+  themes: Theme[] = [
+    {
+      dark: true,
+      text: '夜间'
+    },
+    {
+      dark: false,
+      text: '白天'
+    }
+  ];
+  updateTheme(dark: boolean) {
+    console.log(this.themes);
+    localStorage.setItem('dark', (this.$vuetify.theme.dark = dark).toString());
   }
-};
+  beforeCreate() {
+    // 读取缓存主题
+    this.$vuetify.theme.dark = localStorage.getItem('dark') === 'true';
+  }
+}
 </script>
